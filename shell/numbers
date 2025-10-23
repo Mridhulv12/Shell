@@ -1,0 +1,5 @@
+#!/bin/bash
+read -p "Enter first digit :"  first
+read -p "Enter second digit :"  second
+sum=`expr $first + $second `
+echo sum=$sum
