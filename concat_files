@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Ask user for output filename
+read -p "Enter the output filename: " output_file
+
+# Ask user for input filenames (space-separated)
+read -p "Enter input filenames (space-separated): " -a input_files
+
+# Check if at least one input file is provided
+if [ "${#input_files[@]}" -lt 1 ]; then
+    echo "No input files provided"
+    exit 1
+fi
+
+# Check if input files exist
+for file in "${input_files[@]}"; do
+    if [ ! -f "$file" ]; then
+        echo "File does not exist: $file"
+        exit 1
+    fi
+done
+
+# Concatenate files
+cat "${input_files[@]}" > "$output_file"
+
+echo "Files concatenated successfully into $output_file"
+
